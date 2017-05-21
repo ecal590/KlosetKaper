@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.ebonycalloway.klosetkaper">
+    <uses-feature android:name="android.hardware.camera" android:required="true" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
+    <uses-permission android:name="android.permission.CAMERA"></uses-permission>
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".View.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".View.AddItem"
+            android:label="@string/title_activity_add_item"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".View.ViewCloset"
+            android:label="@string/title_activity_view_closet"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".View.BuildOutfit"
+            android:label="@string/title_activity_build_outfit"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".FindOutfit"
+            android:label="@string/title_activity_find_outfit"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".View.Hamper"
+            android:label="@string/title_activity_hamper"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Settings"
+            android:label="@string/title_activity_settings"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MoreInfo"
+            android:label="@string/title_activity_more_info"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".WearIt"
+            android:label="@string/title_activity_wear_it"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".OutfitSearch"
+            android:label="@string/title_activity_outfit_search"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".View.ViewItem"
+            android:label="@string/title_activity_view_item"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+    </application>
+
+</manifest>

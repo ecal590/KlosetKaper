@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.example.ebonycalloway.klosetkaper.View.ViewCloset">
+<RadioGroup
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:id="@+id/radioGroup2">
+
+    <RadioButton
+        android:id="@+id/alphaSort"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:checked="true"
+        android:text="@string/abc"
+        android:layout_weight="0.19"
+        android:layout_alignParentRight="true"/>
+
+    <RadioButton
+        android:id="@+id/categorySort"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:text="@string/category"
+        android:layout_alignParentLeft="true"/>
+
+    <RadioButton
+        android:id="@+id/cleanSort"
+        android:layout_width="wrap_content"
+        android:layout_height="18dp"
+        android:layout_marginLeft="200dp"
+        android:text="@string/cleanliness" />
+</RadioGroup>
+    <ListView
+        android:id="@+id/clothesListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/radioGroup2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+</RelativeLayout>
