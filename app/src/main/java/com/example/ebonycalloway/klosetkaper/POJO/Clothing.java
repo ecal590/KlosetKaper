@@ -1,6 +1,6 @@
 package com.example.ebonycalloway.klosetkaper.POJO;
 
-import android.graphics.drawable.Drawable;
+import android.graphics.Bitmap;
 
 /**
  * Created by ebonycalloway on 3/10/17.
@@ -14,7 +14,7 @@ public class Clothing {
     String occassion;
     String description;
     String location;
-    Drawable picture;
+    byte[] picture;
     long date;
     double cost;
     int wears;
@@ -44,9 +44,10 @@ public class Clothing {
     public void setCost(double cost) {
         this.cost = cost;
     }
-    public Clothing(String name, String primaryColor, String category, String description, String occassion, String location , long date, double cost , int rating) {
+    /*public Clothing(String name, String primaryColor, String secondColor, String category, String description, String occassion, String location , long date, double cost , int rating) {
         this.name = name;
         this.primaryColor = primaryColor;
+        this.secondaryColor = secondColor;
         this.category = category;
         this.description = description;
         this.occassion = occassion;
@@ -56,7 +57,7 @@ public class Clothing {
         this.wears = 0;
         this.wash = 0;
         this.rating = rating;
-    }
+    }*/
     public Clothing(String name, String primaryColor, String secondaryColor, String category, String description, String occassion, String location, long date, double cost ,int rating) {
         this.name = name;
         this.primaryColor = primaryColor;
@@ -160,11 +161,11 @@ public class Clothing {
         this.rating = rating;
     }
 
-    public Drawable getPicture() {
+    public byte[] getPicture() {
         return picture;
     }
 
-    public void setPicture(Drawable picture) {
+    public void setPicture(byte[] picture) {
         this.picture = picture;
     }
 }

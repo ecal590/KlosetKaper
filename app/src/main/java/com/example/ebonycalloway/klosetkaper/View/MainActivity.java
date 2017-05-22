@@ -28,12 +28,13 @@ public class MainActivity extends AppCompatActivity {
             long date = Long.parseLong(b.get("purchaseDate").toString());
             String description = b.get("description").toString();
             String occasion = b.get("occassion").toString();
+            String location = b.get("location").toString();
             double cost = Double.parseDouble(b.get("cost").toString());
             int rating = Integer.parseInt(b.get("rating").toString());
             int wash = Integer.parseInt(b.get("washes").toString());
             int wears = Integer.parseInt(b.get("wears").toString());
 
-            Clothing newClothing = new Clothing(clothingName, firstColor, secondColor, category, description, occasion, date, cost,rating);
+            Clothing newClothing = new Clothing(clothingName, firstColor, secondColor, category, description, location, occasion, date, cost,rating);
             //TODO:Add a Toast to check information
             Toast toast = Toast.makeText(getApplicationContext(),newClothing.getName(),Toast.LENGTH_LONG);
             toast.show();

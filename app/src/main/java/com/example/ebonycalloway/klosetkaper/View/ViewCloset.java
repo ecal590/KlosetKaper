@@ -30,7 +30,7 @@ public class ViewCloset extends AppCompatActivity {
         String dbString = dbHandler.databaseToString();
         String[] clothingList = dbString.split(",");
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,clothingList);
-        clothesListView.setAdapter(adapter);
+        clothesListView.setAdapter(adapter);//TODO:Set on click for each item
 
     }
 }

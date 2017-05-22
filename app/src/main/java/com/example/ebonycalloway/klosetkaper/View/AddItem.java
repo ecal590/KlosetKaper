@@ -11,8 +11,10 @@ import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.RatingBar;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.ebonycalloway.klosetkaper.Controller.MyDBHandler;
 import com.example.ebonycalloway.klosetkaper.POJO.Clothing;
@@ -37,8 +39,10 @@ public class AddItem extends AppCompatActivity {
     EditText costEditText;
     RatingBar ratingBar;
     Spinner occasionSpinner;
+    RadioGroup locationGroup;
     MyDBHandler dbHandler;
     Button pictureTake,addItem;
+    byte[] photo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +60,7 @@ public class AddItem extends AppCompatActivity {
         costEditText = (EditText) findViewById(R.id.costEditText);
         ratingBar = (RatingBar) findViewById(R.id.ratingBar);
         occasionSpinner = (Spinner) findViewById(R.id.occasionSpinner);
+        locationGroup = (RadioGroup) findViewById(R.id.locationGroup);
 
         dbHandler = new MyDBHandler(this,null,null,1);
 
@@ -94,9 +99,15 @@ public class AddItem extends AppCompatActivity {
         intent.putExtra("washes",3);
         intent.putExtra("wears",0);*/
         if(nameText.getText().toString() != null && color1Spinner.getSelectedItem().toString() != null && color2Spinner.getSelectedItem().toString() != null && categorySpinner.getSelectedItem().toString() != null && descriptionEditText.getText().toString() != null && occasionSpinner.getSelectedItem().toString() != null && Double.parseDouble(costEditText.getText().toString()) >=0.00) {
-            Clothing clothing = new Clothing(nameText.getText().toString(), color1Spinner.getSelectedItem().toString(), color2Spinner.getSelectedItem().toString(), categorySpinner.getSelectedItem().toString(), descriptionEditText.getText().toString(), occasionSpinner.getSelectedItem().toString(), calendarView.getDate(), Double.parseDouble(costEditText.getText().toString()), ratingBar.getNumStars());
+            int id = locationGroup.getCheckedRadioButtonId();
+            View radioButton = locationGroup.findViewById(id);
+            int index = locationGroup.indexOfChild(radioButton);
+
+            RadioButton r = (RadioButton) locationGroup.getChildAt(index);
+            Clothing clothing = new Clothing(nameText.getText().toString(), color1Spinner.getSelectedItem().toString(), color2Spinner.getSelectedItem().toString(), categorySpinner.getSelectedItem().toString(), descriptionEditText.getText().toString(), occasionSpinner.getSelectedItem().toString(), r.getText().toString(),calendarView.getDate(), Double.parseDouble(costEditText.getText().toString()), ratingBar.getNumStars());
             clothing.setWash(0);
-            clothing.setWears(0);
+            clothing.setWears(0);//TODO:Washes and wears initialized to something other than 0
+            clothing.setPicture(photo);
             dbHandler.addClothing(clothing);
         }
         //TODO: PASS clothing to Clothing Manager CLASS
@@ -116,9 +127,10 @@ public class AddItem extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             Bundle extras = data.getExtras();
-            Bitmap photo = (Bitmap) extras.get("data");
+            Bitmap picture = (Bitmap) extras.get("data");
+            photo = picture.getBytes();
             //TODO: Rotate picture 90 degrees right
-            outfitImageView.setImageBitmap(photo);
+            outfitImageView.setImageBitmap(picture);
 
         }
     }

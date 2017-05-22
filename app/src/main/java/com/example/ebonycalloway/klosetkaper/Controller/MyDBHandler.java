@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 import com.example.ebonycalloway.klosetkaper.POJO.Clothing;
 
@@ -14,14 +15,14 @@ import com.example.ebonycalloway.klosetkaper.POJO.Clothing;
 
 public class MyDBHandler extends SQLiteOpenHelper {
 
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 3;
     private static final String DATABASE_NAME = "closetDB.db";
     public static final String TABLE_CLOTHING = "clothing";
     public static final String COLUMN_ID = "_id";
     public static final String COLUMN_CLOTHINGNAME = "clothingname";
     public static final String COLUMN_CLOTHINGDESCRIPTION = "clothingdescription";
     public static final String COLUMN_CLOTHINGOCCASION = "clothingoccasion";
-    public static final String COLUMN_CLOTHINGCOLOR = "clothingdcolor";
+    public static final String COLUMN_CLOTHINGCOLOR = "clothingcolor";
     public static final String COLUMN_CLOTHINGCOLOR2 = "clothingcolor2";
     public static final String COLUMN_CLOTHINGDATE = "clothingdate";
     public static final String COLUMN_CLOTHINGLOCATION = "clothinglocation";
@@ -36,20 +37,19 @@ public class MyDBHandler extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        String query = "CREATE TABLE " + TABLE_CLOTHING + "(" +
+        String query = "CREATE TABLE " + TABLE_CLOTHING + " (" +
                 COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COLUMN_CLOTHINGNAME + " TEXT " +
-                COLUMN_CLOTHINGDESCRIPTION + " TEXT " +
-                COLUMN_CLOTHINGOCCASION + "TEXT" +
-                COLUMN_CLOTHINGCOLOR + "TEXT" +
-                COLUMN_CLOTHINGCOLOR2 + "TEXT" +
-                COLUMN_CLOTHINGDATE + "TEXT" +
-                COLUMN_CLOTHINGLOCATION + "TEXT" +
-                COLUMN_CLOTHINGCATEGORY + "TEXT" +
-                COLUMN_CLOTHINGPIC + "TEXT" +//"BLOB"
-                COLUMN_CLOTHINGCOST + "TEXT" +
-                COLUMN_CLOTHINGRATING + "TEXT" +
-                ");";
+                COLUMN_CLOTHINGNAME + " TEXT, " +
+                COLUMN_CLOTHINGDESCRIPTION + " TEXT, " +
+                COLUMN_CLOTHINGOCCASION + " TEXT, " +
+                COLUMN_CLOTHINGCOLOR + " TEXT, " +
+                COLUMN_CLOTHINGCOLOR2 + " TEXT, " +
+                COLUMN_CLOTHINGDATE + " TEXT, " +
+                COLUMN_CLOTHINGLOCATION + " TEXT, " +
+                COLUMN_CLOTHINGCATEGORY + " TEXT, " +
+                COLUMN_CLOTHINGPIC + " BLOB, " +
+                COLUMN_CLOTHINGCOST + " TEXT, " +
+                COLUMN_CLOTHINGRATING + " TEXT);";
         sqLiteDatabase.execSQL(query);
     }
 
@@ -70,7 +70,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
         values.put(COLUMN_CLOTHINGDATE, clothing.getDate());
         values.put(COLUMN_CLOTHINGLOCATION,clothing.getLocation());
         values.put(COLUMN_CLOTHINGCATEGORY, clothing.getCategory());
-        values.put(COLUMN_CLOTHINGPIC,"he");//byte, drawable, blob//TODO: picture conversion
+        values.put(COLUMN_CLOTHINGPIC,clothing.getPicture());
         values.put(COLUMN_CLOTHINGCOST, clothing.getCost());
         values.put(COLUMN_CLOTHINGRATING,clothing.getRating());
         SQLiteDatabase db = getWritableDatabase();

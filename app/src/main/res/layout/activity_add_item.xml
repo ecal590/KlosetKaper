@@ -96,6 +96,7 @@
 
     <RadioGroup
         android:layout_width="100dp"
+        android:id="@+id/locationGroup"
         android:layout_height="75dp"
         android:layout_below="@+id/calendarView"
         android:layout_alignParentRight="true"
